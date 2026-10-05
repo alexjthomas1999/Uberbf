@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>UberBF</title>
+<style>
+:root{color-scheme:light dark;--bg:#f6f5f2;--surface:#fff;--ink:#171717;--muted:#737373;--line:#e5e5e5;--accent:#111;--accentText:#fff;--soft:#f0efec;--pink:#ffe8ed}
+@media(prefers-color-scheme:dark){:root{--bg:#111;--surface:#1a1a1a;--ink:#f5f5f5;--muted:#a5a5a5;--line:#333;--accent:#fff;--accentText:#111;--soft:#252525;--pink:#3a2026}}
+*{box-sizing:border-box}body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--ink)}#app{min-height:100vh;background:var(--bg)}
+.wrap{max-width:620px;margin:auto;padding:28px 20px 44px}.top{display:flex;align-items:center;justify-content:space-between;margin-bottom:28px}.logo{font-size:28px;font-weight:900;letter-spacing:-1.5px}.logo span{font-weight:500}.heart{font-size:24px}.hero h1{font-size:38px;line-height:1.02;letter-spacing:-2px;margin:0 0 9px}.hero p{margin:0 0 26px;color:var(--muted);font-size:16px}.card{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:18px;margin-bottom:14px;box-shadow:0 4px 20px rgba(0,0,0,.04)}label{display:block;font-size:12px;font-weight:750;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:8px}.field{display:flex;align-items:center;gap:10px;border:1px solid var(--line);border-radius:14px;padding:14px;background:var(--soft)}input,select{width:100%;border:0;outline:0;background:transparent;color:var(--ink);font-size:16px}select{appearance:auto}.tiergrid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.tier{border:1.5px solid var(--line);border-radius:16px;padding:15px;text-align:left;background:var(--surface);color:var(--ink);cursor:pointer;transition:.15s}.tier.active{border-color:var(--ink);background:var(--soft);transform:translateY(-1px)}.tier .emoji{font-size:25px;display:block;margin-bottom:8px}.tier b{display:block;font-size:15px}.tier small{color:var(--muted);display:block;margin-top:4px;line-height:1.3}.cta{width:100%;border:0;border-radius:16px;padding:17px;background:var(--accent);color:var(--accentText);font-size:17px;font-weight:800;cursor:pointer;margin-top:5px}.fine{font-size:12px;color:var(--muted);text-align:center;margin:12px 10px}.toast{display:none;position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:13px 18px;border-radius:999px;font-weight:700;white-space:nowrap;box-shadow:0 8px 30px rgba(0,0,0,.2)}.toast.show{display:block}.contactRow{display:flex;align-items:center;gap:12px}.contactInfo{flex:1;min-width:0}.contactName{font-weight:800;font-size:16px}.contactPhone{color:var(--muted);font-size:13px;margin-top:3px}.editBtn{border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:12px;padding:9px 12px;font-weight:750;cursor:pointer}.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.48);z-index:20;padding:18px;align-items:flex-end;justify-content:center}.modal.show{display:flex}.modalCard{width:min(620px,100%);background:var(--surface);color:var(--ink);border-radius:24px;padding:22px;box-shadow:0 20px 70px rgba(0,0,0,.35)}.modalCard h2{margin:0 0 7px;font-size:25px}.modalCard p{margin:0 0 18px;color:var(--muted);font-size:14px;line-height:1.45}.modalField{margin-bottom:12px}.modalField label{text-transform:none;letter-spacing:0;font-size:13px}.modalField input{border:1px solid var(--line);border-radius:13px;padding:13px;background:var(--soft);display:block}.modalActions{display:flex;gap:10px;margin-top:15px}.secondary{flex:1;border:1px solid var(--line);border-radius:14px;padding:14px;background:var(--surface);color:var(--ink);font-weight:800}.primary{flex:1;border:0;border-radius:14px;padding:14px;background:var(--accent);color:var(--accentText);font-weight:800}.preview{background:var(--pink);border-radius:16px;padding:13px 15px;margin-top:13px;font-size:13px;line-height:1.45}.preview strong{font-size:11px;text-transform:uppercase;letter-spacing:.08em}.destHint{margin-top:7px;color:var(--muted);font-size:12px}@media(max-width:430px){.hero h1{font-size:34px}.tiergrid{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body><main id="app"><div class="wrap">
+<header class="top"><div class="logo">Uber<span>BF</span></div><div class="heart">♥</div></header>
+<section class="hero"><h1>Your ride.<br>Your boyfriend.</h1><p>Skip the logistics. Pick the vibe and let him handle the rest.</p></section>
+<div class="card"><label>Boyfriend</label><div class="contactRow"><div class="contactInfo"><div class="contactName" id="contactName">No boyfriend saved</div><div class="contactPhone" id="contactPhone">Add his phone number once and UberBF will remember it.</div></div><button class="editBtn" id="editContact">Set up</button></div></div>
+<div class="card"><label>Where are we going?</label><div class="field"><span>⌖</span><input id="destination" placeholder="Enter a destination" value="" /></div><div class="destHint">Try: Dinner at Barcelona, Home, or the airport</div></div>
+<div class="card"><label>Choose your ride</label><div class="tiergrid">
+<button class="tier active" data-tier="UberBF"><span class="emoji">🚗</span><b>UberBF</b><small>Pick me up and take me there</small></button>
+<button class="tier" data-tier="UberBF Walk"><span class="emoji">🚶</span><b>UberBF Walk</b><small>Come take me on a walk</small></button>
+<button class="tier" data-tier="UberBF Black"><span class="emoji">🍽️</span><b>UberBF Black</b><small>Pick me up for dinner</small></button>
+<button class="tier" data-tier="UberBF Plus"><span class="emoji">💐</span><b>UberBF Plus</b><small>Ride + flowers</small></button>
+</div></div>
+<div class="card"><label>Message preview</label><div class="preview" id="preview"><strong>UberBF</strong><br><span id="message">I need a ride to my destination. Can you come get me? ❤️</span></div></div>
+<button class="cta" id="send">Request my boyfriend →</button><div class="fine">This opens your phone's Messages app with the request ready to send.</div>
+</div><div class="toast" id="toast">Request ready — opening Messages…</div></main>
+<div class="modal" id="contactModal"><div class="modalCard"><h2>Choose your boyfriend</h2><p>UberBF can't access your iPhone contacts from a website, so enter his name and number once. We'll save it on this device so future ride requests go straight to him.</p><div class="modalField"><label for="contactNameInput">Name</label><input id="contactNameInput" placeholder="Boyfriend" autocomplete="name"></div><div class="modalField"><label for="contactPhoneInput">Phone number</label><input id="contactPhoneInput" type="tel" inputmode="tel" placeholder="(555) 123-4567" autocomplete="tel"></div><div class="modalActions"><button class="secondary" id="cancelContact">Cancel</button><button class="primary" id="saveContact">Save boyfriend</button></div></div></div>
+<script>
+const tiers={
+ UberBF:(d)=>`I need a ride to ${d}. Can you come get me? ❤️`,
+ 'UberBF Walk':(d)=>`UberBF Walk request 🚶 Can you come take me on a walk${d?` to ${d}`:''}? ❤️`,
+ 'UberBF Black':(d)=>`UberBF Black request 🍽️ Can you pick me up${d?` at ${d}`:''} for dinner? ❤️`,
+ 'UberBF Plus':(d)=>`UberBF Plus request 💐 Can you pick me up${d?` at ${d}`:''}? Bonus points if you bring flowers. ❤️`
+};
+let selected='UberBF';
+const dest=document.getElementById('destination');
+const msg=document.getElementById('message');
+const modal=document.getElementById('contactModal');
+const nameInput=document.getElementById('contactNameInput');
+const phoneInput=document.getElementById('contactPhoneInput');
+const contactName=document.getElementById('contactName');
+const contactPhone=document.getElementById('contactPhone');
+const editContact=document.getElementById('editContact');
+
+function getContact(){try{return JSON.parse(localStorage.getItem('uberbfContact')||'null')}catch(e){return null}}
+function formatPhone(v){return (v||'').replace(/[^\d+]/g,'')}
+function renderContact(){const c=getContact();if(c&&c.phone){contactName.textContent=c.name||'Boyfriend';contactPhone.textContent=c.phone;editContact.textContent='Change'}else{contactName.textContent='No boyfriend saved';contactPhone.textContent='Add his phone number once and UberBF will remember it.';editContact.textContent='Set up'}}
+function openContact(){const c=getContact();nameInput.value=c?.name||'';phoneInput.value=c?.phone||'';modal.classList.add('show');setTimeout(()=>nameInput.focus(),50)}
+function closeContact(){modal.classList.remove('show')}
+function update(){const d=dest.value.trim()||'my destination';msg.textContent=tiers[selected](d)}
+
+dest.addEventListener('input',update);
+renderContact();
+editContact.addEventListener('click',openContact);
+document.getElementById('cancelContact').addEventListener('click',closeContact);
+document.getElementById('saveContact').addEventListener('click',()=>{const name=nameInput.value.trim()||'Boyfriend';const phone=phoneInput.value.trim();const normalized=formatPhone(phone);if(normalized.replace(/\D/g,'').length<7){phoneInput.focus();phoneInput.setCustomValidity('Please enter a valid phone number');phoneInput.reportValidity();return}phoneInput.setCustomValidity('');localStorage.setItem('uberbfContact',JSON.stringify({name,phone}));renderContact();closeContact()});
+modal.addEventListener('click',(e)=>{if(e.target===modal)closeContact()});
+document.querySelectorAll('.tier').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('.tier').forEach(x=>x.classList.remove('active'));b.classList.add('active');selected=b.dataset.tier;update()}));
+document.getElementById('send').addEventListener('click',()=>{const c=getContact();if(!c||!c.phone){openContact();return}const phone=formatPhone(c.phone);const body=encodeURIComponent(msg.textContent);const toast=document.getElementById('toast');toast.textContent=`Request ready for ${c.name||'Boyfriend'} — opening Messages…`;toast.classList.add('show');setTimeout(()=>toast.classList.remove('show'),2400);window.location.href=`sms:${phone}&body=${body}`});
+update();
+</script></body></html>
